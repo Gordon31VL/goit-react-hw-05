@@ -29,7 +29,7 @@ function App() {
         </header>
        <Suspense fallback={<div>Loading...</div>}>
           <Routes>
-            <Route path='/' element={<HomePage />}></Route>
+            <Route path='/' element={<HomePage options={options}/>}></Route>
             <Route path='/movies' element={<MoviesPage options={options}/>}></Route>
             <Route path='/movies/:id' element={<MoviesDetailsPage options={options} />}>
               <Route path="cast" element={<MovieCast />} />

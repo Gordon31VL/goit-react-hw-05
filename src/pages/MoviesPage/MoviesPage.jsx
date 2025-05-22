@@ -30,7 +30,7 @@ export default function MoviesPage({options}) {
         <div>
             <div>
                 <form onSubmit={handlerSubmit}>
-                <input type="text" name="query"></input>
+                <input type="text" name="query" placeholder="Search movie"></input>
                 <button type="submit">submit</button>
                 </form>
             </div>
