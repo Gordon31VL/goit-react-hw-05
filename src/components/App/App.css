@@ -1,0 +1,16 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  /* text-align: center; */
+}
+
+.nav-link {
+  color: black;
+  margin-right: 15px;
+  text-decoration: none;
+}
+.nav-link.active {
+  color: red;
+  text-decoration: underline;
+}
