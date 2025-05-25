@@ -1,16 +1,16 @@
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import BackLink from "../../components/BackLink/BackLink";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import movieDetailsPageCss from "./MovieDetailsPage.module.css"
+import MovieCast from "../../components/MovieCast/MovieCast";
+import MovieReviews from "../../components/MovieReviews/MovieReviews";
 
 export default function MovieDetailsPage({options}) {
     const [movie, setMovie] = useState(null);
-
-
     const { id } = useParams();
     const location = useLocation();
-    const backLinkHref = location.state?.from?.pathname || '/movies';
+    const backLinkHref = useRef(location.state?.from?.pathname || '/movies');
     
     useEffect(() => {
         const getMovieDetails = async () => {
@@ -65,7 +65,7 @@ export default function MovieDetailsPage({options}) {
                         <li><Link to="reviews">Reviews</Link></li>
                     </ul>
                 </div>
-                <Outlet context={{ id, options }}/>
+                <Outlet />
                 </div>
         </div>
     )

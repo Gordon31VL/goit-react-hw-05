@@ -1,6 +1,7 @@
 import './App.css'
-import { Routes, Route, NavLink } from "react-router-dom";
-import { lazy, Suspense} from "react";
+import { Routes, Route } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import Navigation from "../Navigation/Navigation.jsx"
 
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage.jsx"));
@@ -21,19 +22,14 @@ function App() {
   return (
     <div>
       <div>
-        <header>
-          <nav>
-            <NavLink to='/' className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Home</NavLink>
-            <NavLink to='/movies' className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>Movies</NavLink>
-          </nav>
-        </header>
-       <Suspense fallback={<div>Loading...</div>}>
+        <Navigation />
+        <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path='/' element={<HomePage options={options}/>}></Route>
             <Route path='/movies' element={<MoviesPage options={options}/>}></Route>
             <Route path='/movies/:id' element={<MoviesDetailsPage options={options} />}>
-              <Route path="cast" element={<MovieCast />} />
-              <Route path="reviews" element={<MovieReviews />} />
+              <Route path="cast" element={<MovieCast options={options}/>} />
+              <Route path="reviews" element={<MovieReviews options={options}/>} />
             </Route>
             <Route path='*' element={<NotFoundPage />}></Route>
           </Routes>

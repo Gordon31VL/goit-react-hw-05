@@ -35,14 +35,6 @@ export default function HomePage({ options }) {
   return (
     <>
       <h1>Trending today</h1>
-      <ul>
-        {movies.map((movie) => {
-          return (
-            <li key={movie.id}>
-              <MovieList title={movie.title} id={movie.id}></MovieList>
-            </li>
-          )
-        })}
-        </ul>
+      <MovieList movies={movies}></MovieList>
     </>
   )}

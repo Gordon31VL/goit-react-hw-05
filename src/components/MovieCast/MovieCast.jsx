@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-export default function MovieCast() {
-    const { id, options } = useOutletContext();
+export default function MovieCast({options}) {
+    const { id } = useParams();
     const [movieCast, setMovieCast] = useState(null);
 
     useEffect(() => {
