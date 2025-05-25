@@ -4,7 +4,7 @@ import axios from "axios";
 
 export default function HomePage({ options }) {
   const [movies, setMovies] = useState(() => {
-    const parseData = localStorage.getItem("moviesList");
+  const parseData = localStorage.getItem("moviesList");
     if (!parseData || parseData === "undefined") return [];
     try {
       const data = JSON.parse(parseData);

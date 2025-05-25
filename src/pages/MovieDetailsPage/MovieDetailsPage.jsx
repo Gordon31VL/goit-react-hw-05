@@ -3,14 +3,12 @@ import BackLink from "../../components/BackLink/BackLink";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import movieDetailsPageCss from "./MovieDetailsPage.module.css"
-import MovieCast from "../../components/MovieCast/MovieCast";
-import MovieReviews from "../../components/MovieReviews/MovieReviews";
 
 export default function MovieDetailsPage({options}) {
     const [movie, setMovie] = useState(null);
     const { id } = useParams();
     const location = useLocation();
-    const backLinkHref = useRef(location.state?.from?.pathname || '/movies');
+    const backLinkHref = useRef(location.state?.from || '/movies');
     
     useEffect(() => {
         const getMovieDetails = async () => {
@@ -32,7 +30,7 @@ export default function MovieDetailsPage({options}) {
     
     return (
         <div>      
-            <BackLink to={backLinkHref}>Back to movies list</BackLink>
+            <BackLink to={backLinkHref.current}>Back to movies list</BackLink>
             <div>
                 <div className={movieDetailsPageCss.box}>
                     <div>
